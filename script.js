@@ -12,19 +12,27 @@ let opl_C3 = document.getElementById("opl_C3");
 
 function solveProblem()
 {
-    opl_B2.value = 1;
-    opl_C2.value = inp_D2.value - opl_B2.value;
-    opl_B3.value = inp_B4.value - opl_B2.value;
-    opl_C3.value = inp_C4.value - opl_C2.value;
-    if(opl_B2.value + opl_C3.value == inp_A1.value &&
-        opl_B3.value + opl_C2.value == inp_D1.value && 
-        opl_B3.value + opl_C3.value == inp_D3.value )
-        {
-            alert("BINGO");
-        }
-        else
-        {
-            alert("KAK");
-        }
+    let gok = 1;
+    let decision = true;
+    while( decision ){
+        opl_B2.value = gok;
+        opl_C2.value = parseInt(inp_D2.value) - parseInt(opl_B2.value);
+        opl_B3.value = parseInt(inp_B4.value) - parseInt(opl_B2.value);
+        opl_C3.value = parseInt(inp_C4.value) - parseInt(opl_C2.value);
+        if(parseInt(opl_B2.value) + parseInt(opl_C3.value) == parseInt(inp_A1.value) &&
+        parseInt(opl_B3.value) + parseInt(opl_C2.value) == parseInt(inp_D1.value) && 
+        parseInt(opl_B3.value) + parseInt(opl_C3.value) == parseInt(inp_D3.value) )
+            {
+                //alert("BINGO");
+                decision = false;
+            }
+            else
+            {
+                //alert("KAK");
+                decision = true; //overbodig, want hij is al true
+                gok++; //shortcut voor gok = gok + 1
+            }
+    }
+    
     //alert("Hallo vrienden van BSD-O-AUG23A");
 }
